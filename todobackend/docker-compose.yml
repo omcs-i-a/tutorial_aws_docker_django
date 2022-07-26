@@ -32,7 +32,7 @@ services:
       interval: 3s
       retries: 10
     ports:
-      - 8000
+      - 8000:8000
     command:
       - uwsgi
       - --http=0.0.0.0:8000
@@ -67,7 +67,7 @@ services:
   db:
     image: mysql:5.7
     healthcheck:
-      test: mysqlshow -u $$MYSQL_USER -p$$MYSQL_PASSWORD
+      test: mysqladmin ping -h 127.0.0.1 -u$$MYSQL_USER -p$$MYSQL_PASSWORD
       interval: 3s
       retries: 10
     environment:

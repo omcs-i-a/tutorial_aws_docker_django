@@ -1,5 +1,5 @@
 # Test stage
-FROM alpine AS test
+FROM alpine:3.13.5 AS test
 LABEL application=todobackend
 
 # Install basic utilities
@@ -25,7 +25,7 @@ WORKDIR /app
 CMD ["python3", "manage.py", "test", "--noinput", "--settings=todobackend.settings_test"]
 
 # Release stage
-FROM alpine
+FROM alpine:3.13.5
 LABEL application=todobackend
 
 # Install operating system dependencies
